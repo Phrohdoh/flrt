@@ -2,9 +2,14 @@
 
 `flrt`, pronounced "flirt", is a command-line tool that makes it easy to add or remove dependencies for a given `pubspec.yaml` file
 
-## Project Status
+## Status
 
 Brand new. Not ready for use.
+
+## Goals
+
+- To be sunsetted by the addition of `flutter packages add <package name>` and `flutter packages remove <package name>` commands
+- To wrap `flutter` and make dependency manipulation easier
 
 ## Build `flrt`
 
