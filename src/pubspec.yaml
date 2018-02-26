@@ -3,6 +3,10 @@ name: "flrt"
 version: "0.0.1"
 authors:
 - Taryn Hill <taryn@phrohdoh.com>
+
 dependencies: 
   args: "1.4.1"
   pubspec: "0.0.15"
+
+environment:
+  sdk: ">=1.24.3 <2.0.0"
