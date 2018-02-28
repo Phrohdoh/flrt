@@ -50,6 +50,8 @@ dependencies:
   path_provider: <unknown>
 ```
 
+> Note: See https://github.com/Phrohdoh/flrt/issues/3 regarding the \<unknown\> value
+
 This demonstrates the `add` command. The inverse of that command is `remove`.
 
 Again given the initial manifest.
