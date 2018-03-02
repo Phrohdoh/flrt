@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'package:bwu_pub_client/bwu_pub_client.dart' show PubPackage, PubClient;
 import 'package:pubspec/pubspec.dart';
 import 'package:args/command_runner.dart';
 
@@ -8,6 +10,22 @@ Future main(List<String> arguments) async {
     ..addCommand(new AddCommand())
     ..addCommand(new RemoveCommand())
     ..run(arguments);
+}
+
+Future<PubPackage> queryForPackage(String name) async {
+  var client = new PubClient(new http.Client());
+  PubPackage pkg = null;
+
+  try {
+    pkg = await client.fetchPackage(name);
+  } on FormatException catch(e) {
+    // This is pretty ugly but, AFAICT, `fetchPackage` assume success because it goes directly into JSON parsing.
+    var c = new Completer();
+    c.complete(null);
+    return c.future;
+  }
+
+  return pkg;
 }
 
 class AddCommand extends Command {
@@ -39,8 +57,15 @@ class AddCommand extends Command {
 
     for (var package_name in argResults.rest) {
       if (!spec.dependencies.containsKey(package_name)) {
-        // TODO: Query the registry for the latest version of the given package.
-        newDeps[package_name] = '<unknown>';
+        var pkg = await queryForPackage(package_name);
+        if (pkg == null) {
+          stderr.writeln("Could not find package `$package_name` in pub registry");
+          exitCode = 2;
+          return;
+        }
+
+        var ver = pkg.latest.version.toString();
+        newDeps[package_name] = ver;
       }
     }
 
