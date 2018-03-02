@@ -24,7 +24,16 @@ class AddCommand extends Command {
   Future<Null> run() async {
     var manifest_dir = argResults['manifest-directory'];
     var d = new Directory(manifest_dir);
-    var spec = await PubSpec.load(d);
+    PubSpec spec = null;
+
+    try {
+      spec = await PubSpec.load(d);
+    } on FileSystemException catch(e) {
+      stderr.writeln("Error attempting to load ${e.path}: ${e.message}");
+      stderr.writeln("Are you sure `${e.path}` exists? (consider using the `--manifest-directory` option)");
+      exitCode = 1;
+      return;
+    }
 
     var newDeps = spec.dependencies;
 
