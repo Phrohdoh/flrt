@@ -1,12 +1,12 @@
 description: "Allows addition/removal of dependencies to/from a `pubspec.yaml` file"
 name: "flrt"
 version: "0.0.1"
-authors:
-- Taryn Hill <taryn@phrohdoh.com>
-
-dependencies: 
+dependencies:
   args: "1.4.1"
+  bwu_pub_client: "0.1.0"
+  http: "0.11.3+16"
   pubspec: "0.0.15"
-
 environment:
   sdk: ">=1.24.3 <2.0.0"
+authors:
+  - "Taryn Hill <taryn@phrohdoh.com>"

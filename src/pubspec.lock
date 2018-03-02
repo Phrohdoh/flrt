@@ -7,6 +7,18 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.1"
+  async:
+    description:
+      name: async
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
+  bwu_pub_client:
+    description:
+      name: bwu_pub_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   charcode:
     description:
       name: charcode
@@ -31,6 +43,24 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.8"
+  http:
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.11.3+16"
+  http_parser:
+    description:
+      name: http_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.1"
+  logging:
+    description:
+      name: logging
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.11.3+1"
   matcher:
     description:
       name: matcher
@@ -103,6 +133,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.7"
+  typed_data:
+    description:
+      name: typed_data
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.5"
   uri:
     description:
       name: uri
