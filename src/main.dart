@@ -28,7 +28,7 @@ class AddCommand extends Command {
 
     try {
       spec = await PubSpec.load(d);
-    } on FileSystemException catch(e) {
+    } on FileSystemException catch (e) {
       stderr.writeln("Error attempting to load ${e.path}: ${e.message}");
       stderr.writeln("Are you sure `${e.path}` exists? (consider using the `--manifest-directory` option)");
       exitCode = 1;
@@ -48,6 +48,7 @@ class AddCommand extends Command {
     spec.save(d);
   }
 }
+
 class RemoveCommand extends Command {
   @override
   String get description => 'remove dependencies from a given pubspec.yaml file';
